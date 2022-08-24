@@ -10,12 +10,14 @@ class businessCard:
 
        
 
-    def __str__(self):
-        return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
+    #def __str__(self):
+     #   return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
 
-    def __repr__(self):
-        return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
+    #def __repr__(self):
+      #  return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
 
+    def contact(self):
+        return "Kontaktuje się z:  {}, {}, {}, {}" .format(self.name ,self.second_name, self.position ,self.email)   
         
    
 
@@ -39,8 +41,8 @@ class Customer:
     def __repr__(self):
         return 'first_name: {}, address: {}, email: {}'.format(self.first_name, self.address, self.email)    
 
-#customer1 = Customer(fk.first_name(),fk.address(),fk.email())  #drukowanie classy customer
-#print(customer1)
+customer1 = Customer(fk.first_name(),fk.address(),fk.email())  #drukowanie classy customer
+
 
 
 list = [card_1,card_2,card_3,card_4,card_5,card_6]
@@ -58,4 +60,6 @@ bysecond_name = sorted(list, key=lambda surname: surname.second_name)
 byemail = sorted(list, key=lambda email: email.email,reverse=True)
 
 
-print(byemail)
+#print(byemail)
+
+print(card_1.contact())
