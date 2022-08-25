@@ -1,3 +1,4 @@
+from unicodedata import name
 from faker import Faker
 
 class businessCard:
@@ -9,15 +10,23 @@ class businessCard:
         self.email = email
 
        
+    
+    def __str__(self):
+        return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
 
-    #def __str__(self):
-     #   return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
-
-    #def __repr__(self):
-      #  return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
-
+    def __repr__(self):
+        return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
+    
     def contact(self):
+        
         return "Kontaktuje się z:  {}, {}, {}, {}" .format(self.name ,self.second_name, self.position ,self.email)   
+
+    @property
+    def counter(self):   
+       return (len(self.name)) + len("   ") + (len(self.second_name))
+        
+
+      
         
    
 
@@ -62,4 +71,9 @@ byemail = sorted(list, key=lambda email: email.email,reverse=True)
 
 #print(byemail)
 
-print(card_1.contact())
+print(card_1.contact)
+
+
+#print(len(card_1.name)+len(card_1.second_name))
+
+print(card_1.counter)
