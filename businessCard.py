@@ -1,5 +1,10 @@
-from unicodedata import name
+
+import email
+from turtle import pos, position
 from faker import Faker
+
+fk=Faker()
+
 
 class businessCard:
     def __init__(self, name, second_name, company_name, position, email):
@@ -19,8 +24,7 @@ class businessCard:
         return 'firstname: {}, secondname: {}, email: {}'.format(self.name,self.second_name,self.email)
     
     def contact(self):
-        
-        return "Kontaktuje się z:  {}, {}, {}, {}" .format(self.name ,self.second_name, self.position ,self.email)   
+        return "dzwonię do {} {}," .format(self.name ,self.second_name)   
 
     @property
     def length(self):   
@@ -29,20 +33,45 @@ class businessCard:
     @length.getter
     def length(self):
         return f"Długość znaków to {self._length}"   
+
+
+
+class BaseContact(businessCard):    
+    def __init__(self, private_number, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.private_number = private_number
+    def contact(self, *args, **kwargs):
+        return f"Wybieram numer {self.private_number} i {super().contact(*args, **kwargs)}"
         
 
+
+
+class BusinessContact(businessCard):
+    def __init__(self, business_phone, *args, **kwargs):
+        super().__init__(*args, **kwargs) 
+        self.business_phone = business_phone 
+    def contact(self, *args, **kwargs):
+        return f"Wybieram numer {self.business_phone} i {super().contact(*args, **kwargs)}"          
         
 
-fk=Faker()
-     
-card_1=businessCard("Rafał", "Kucharski", "Adiatic Solution","Audio control engineer","RafałKucharski@dayrep.com")
-card_2=businessCard("Maciej", "Iwańczuk", "Bose Audio System", "salsman", "MaciejIwanczuk@gmail.com")
-card_3=businessCard("Dorota", "Maciejewska", "National Record Mart", "Secondary school teacher", "DorotaMaciejewska@teleworm.us")
-card_4=businessCard("Elżbieta", "Król", "Four Leaf Clover", "EEO representative", "ElzbietaKrol@armyspy.com")
-card_5=businessCard("Gracja", "Nowak", "Budget Power", "Credit reporter", "Gracjanowak@dayrep.com")
-card_6=businessCard("Michał", "Antoniak","DrLift","selsman","Antoniak@gmail.com")
+ 
 
 
+card_1=businessCard(name="Rafał", second_name="Kucharski", company_name="Adiatic Solution",position="Audio control engineer",email="RafałKucharski@dayrep.com")
+card_2=businessCard(name="Maciej",second_name= "Iwańczuk",company_name= "Bose Audio System",position= "salsman", email= "MaciejIwanczuk@gmail.com")
+card_3=businessCard(name="Dorota",second_name= "Maciejewska", company_name="National Record Mart",position= "Secondary school teacher", email="DorotaMaciejewska@teleworm.us")
+card_4=businessCard(name="Elżbieta", second_name="Król", company_name= "Four Leaf Clover",position= "EEO representative",email= "ElzbietaKrol@armyspy.com")
+card_5=businessCard(name="Gracja",second_name= "Nowak",company_name= "Budget Power", position="Credit reporter", email="Gracjanowak@dayrep.com")
+card_6=businessCard(name="Michał",second_name= "Antoniak",company_name="DrLift",position="selsman",email="Antoniak@gmail.com")
+
+card_7=BaseContact(name="Józef", second_name="Kowalczyk", company_name="Ultimate Fighting Championship", position="Accountant", email="Ufc@yahooo.com", private_number=800212312)
+card_8=BusinessContact(name="Paulinka", second_name= "Fryda", company_name="Lewycky Technology Solution", position="CEO", email="PaulaFrytka@lewycky.com", business_phone=328121432)
+
+
+#print(card_1.contact())
+print(card_8.contact())
+
+# klasa do pobierania danych z FAKERA
 class Customer:
     def __init__(self, first_name, address, email):
         self.first_name = first_name
@@ -69,4 +98,4 @@ byemail = sorted(list, key=lambda email: email.email,reverse=True)
 
 #print(len(card_1.name)+len(card_1.second_name))
 
-print(card_1.length)
+#print(customer1)
