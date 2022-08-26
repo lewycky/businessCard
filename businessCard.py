@@ -31,9 +31,7 @@ class businessCard:
         return f"Długość znaków to {self._length}"   
         
 
-      
         
-   
 
 fk=Faker()
      
@@ -43,8 +41,6 @@ card_3=businessCard("Dorota", "Maciejewska", "National Record Mart", "Secondary 
 card_4=businessCard("Elżbieta", "Król", "Four Leaf Clover", "EEO representative", "ElzbietaKrol@armyspy.com")
 card_5=businessCard("Gracja", "Nowak", "Budget Power", "Credit reporter", "Gracjanowak@dayrep.com")
 card_6=businessCard("Michał", "Antoniak","DrLift","selsman","Antoniak@gmail.com")
-
-
 
 
 class Customer:
@@ -58,25 +54,17 @@ class Customer:
 customer1 = Customer(fk.first_name(),fk.address(),fk.email())  #drukowanie classy customer
 
 
-
 list = [card_1,card_2,card_3,card_4,card_5,card_6]
 
 #for i in list:
  #   print(i.name ,i.second_name , i.email)   
 
 
-#print(loopreturn(card_1))
-
-
-
 byname = sorted(list, key=lambda name: name.name)                                 # sortowanie listy
 bysecond_name = sorted(list, key=lambda surname: surname.second_name)
 byemail = sorted(list, key=lambda email: email.email,reverse=True)
 
-
 #print(byemail)
-
-#print(card_1.contact)
 
 
 #print(len(card_1.name)+len(card_1.second_name))
